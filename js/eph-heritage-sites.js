@@ -79,11 +79,29 @@ let panelHtml = `
       marker.bindPopup(popupContent);
       
       // Interaksi: Klik marker di peta akan melakukan auto-scroll panel samping ke item terkait
-      marker.on('click', function() {
-        document.getElementById(`item-${index}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
+marker.on('click', function() {
+        
+        // 1. Buka panel ke posisi 50% jika sedang di mode ponsel
+        if (typeof window.setMobilePanelExpanded === 'function') {
+          window.setMobilePanelExpanded(true); // Memanggil fungsi dari JS responsif
+        }
+        
+        // 2. Gulir panel secara halus (Mencegah glitch scrollIntoView)
+        let detailsContainer = document.getElementById('details');
+        let targetItem = document.getElementById(`item-${index}`);
+        
+        // Kita beri jeda 300ms agar animasi panel yang naik ke 50% selesai dulu
+        setTimeout(function() {
+          // Menghitung posisi atas elemen relatif terhadap kontainer
+          let scrollPos = targetItem.offsetTop; 
+          
+          detailsContainer.scrollTo({
+            top: scrollPos,
+            behavior: 'smooth'
+          });
+        }, 300);
+        
       });
-    }
-  });
 
   // Matikan animasi loading dan tampilkan panel details
   document.getElementById('loading').style.display = 'none';
