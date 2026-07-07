@@ -150,56 +150,6 @@ margin: 25px;
   font-size: 0.9em;
 }
 
-/* ==========================================================================
-   NAVIGASI (Sistem Flexbox)
-   ========================================================================== */
-
-nav {
-  flex-shrink: 0;
-  margin-top: auto; 
-}
-nav ul {
-  display: flex;
-  list-style: none;
-  margin: 0px; /* Tambahan margin bawah agar tidak menempel dasar layar */
-  padding: 0;
-}
-
-nav ul li {
-  margin: 0;
-  padding: 0;
-}
-
-/* Karena Anda hanya punya 2 menu sekarang, biarkan porsinya seimbang (masing-masing flex: 1) */
-nav ul li:nth-child(1) { flex: 1; text-align: center; }
-nav ul li:nth-child(2) { flex: 1; text-align: center; }
-
-nav li a {
-  display: block; 
-  width: 100%;    
-  box-sizing: border-box; 
-  padding: 10px 0;
-  font-size: 12px;
-  line-height: 12px;
-  font-weight: bold;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #bf9090;
-  transition: background 0.3s, color 0.3s;
-}
-
-nav li a:hover,
-nav li.selected a, nav li a.selected,
-nav li.active a, nav li a.active {
-  background: transparent;
-  color: #fff !important;
-}
-
-#nav-detail a, 
-#nav-detail a:not([href]) {
-  color: #bf9090; 
-}
-
 
 /* =========================================
    5. KONTEN LINIMASA (DETAILS)
